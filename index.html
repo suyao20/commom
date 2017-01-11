@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta name="keywords" content="your keywords">
+        <meta name="description" content="your description">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<link rel="stylesheet" href="css/common.css">
+		<title>viewport模板</title>	
+		<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	</head>
+      
+	<body>
+		<header></header>
+		<div class="wrap">这里开始内容 </div>
+		<div id="table"></div>
+		<footer></footer>	 
+		<script type="text/javascript">
+			;(function($){
+				$.fn.extend(
+					//默认配置
+						var defaultOpt = {
+							name:"table",
+							background:"red";
+							width:100
+						}
+						var finalConfig = $.extend(defaultOpt,opt);//正式配置
+						//插件干正事
+						this.empty();
+						this.html("<table class="table" style="background:"++""><thead></thead><tr><th>1</th><th>1</th></tr><tr><td>2</td><td>2</td></tr><tr><td>3</td><td>3</td></tr></table>");
+						console.log(finalConfig);
+						callback("done");
+					}
+				);
+			})(jQuery);
+			
+			$(function(){
+				$("#table").jsTable({
+					name:"table",
+					background:"red",
+					width:100,
+				},function(msg){
+//					alert(msg);
+				});
+			});
+			
+		</script>
+	</body>
+
+</html>
