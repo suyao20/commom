@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div>
+	<form class="mustadd">
+           <p> 
+	            <label>请选择一个文件：</label>  
+	            <input type="file" id="file" onchange="readAsDataURL()"/>  
+	            <!--<input type="button" value="读取图像" onclick="readAsDataURL()" />-->
+           </p>			
+	</form>
+<div id="result"></div>
+<script type="text/javascript">
+	var result = document.getElementById("result");
+	var files = document.getElementById("file");
+		//判断浏览器是否支持FileReader接口  
+        if(typeof FileReader == 'undefined'){  
+        result.InnerHTML="<p>你的浏览器不支持FileReader接口！</p>";  
+        //使选择控件不可操作  
+        files.setAttribute("disabled","disabled");
+        } 
+        function readAsDataURL(){
+		    //检验是否为图像文件  
+		    var file = files.files[0];
+		    if(!/image\/\w+/.test(file.type)){  
+		//      alert("看清楚，这个需要图片！"); 
+				result.InnerHTML="<p>请选择图片格式！</p>"; 
+		        return false;  
+		    }
+		    var reader = new FileReader();
+		    //将文件以Data URL形式读入页面
+		    reader.readAsDataURL(file);
+		    reader.onload=function(e){  
+		    // var result=document.getElementById("result");  
+		    //显示文件  
+		    result.innerHTML='<img src="' + this.result +'" alt="" style="width: 100px;height: 100px;"/>';  
+		    }		            	
+        } 
+</script>
+</body>
+</html>
